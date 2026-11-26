@@ -7,8 +7,8 @@
     <meta name="theme-color" content="#182b27" />
     <link rel="icon" href="data:," />
     <title>Idle Fishing</title>
-    <script type="module" crossorigin src="./assets/index-BFc-FG4C.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-pmRSUPar.css">
+    <script type="module" crossorigin src="./assets/index-CzJylzsV.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-BlnLP8ZR.css">
   </head>
   <body>
     <main class="game">
@@ -69,11 +69,30 @@
           <h2 id="panel-title" tabindex="-1"></h2>
           <button type="button" class="close-dialog" data-testid="close-dialog" data-copy-label="close">×</button>
         </div>
-        <div class="dialog-content" data-testid="panel-content"></div>
         <section class="settings-controls" hidden>
           <button type="button" class="sound-toggle" data-testid="sound" aria-pressed="true" data-copy="sound"></button>
+          <div class="volume-control">
+            <label for="music-volume" data-copy="musicVolume"></label>
+            <span id="music-volume-value" aria-hidden="true"></span>
+            <input id="music-volume" type="range" min="0" max="100" value="100" data-testid="music-volume">
+          </div>
+          <div class="volume-control">
+            <label for="effects-volume" data-copy="effectsVolume"></label>
+            <span id="effects-volume-value" aria-hidden="true"></span>
+            <input id="effects-volume" type="range" min="0" max="100" value="100" data-testid="effects-volume">
+          </div>
           <button type="button" data-testid="fullscreen" data-copy="fullscreen" hidden></button>
+          <button type="button" class="reset-progress" data-testid="reset-progress" aria-controls="reset-confirmation" aria-expanded="false" data-copy="resetProgress"></button>
+          <div id="reset-confirmation" class="reset-confirmation" data-testid="reset-confirmation" role="group" aria-labelledby="reset-warning" hidden>
+            <p id="reset-warning" data-copy="resetProgressWarning"></p>
+            <div class="reset-actions">
+              <button type="button" data-testid="cancel-reset" data-copy="cancel"></button>
+              <button type="button" class="reset-progress" data-testid="confirm-reset" data-copy="confirmResetProgress"></button>
+            </div>
+            <p class="reset-feedback" data-testid="reset-feedback" role="status"></p>
+          </div>
         </section>
+        <div class="dialog-content" data-testid="panel-content"></div>
         <p class="panel-feedback" role="status" data-testid="panel-feedback"></p>
       </dialog>
     </main>
