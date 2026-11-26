@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="only dark" />
+    <meta name="theme-color" content="#182b27" />
+    <link rel="icon" href="data:," />
+    <title>Idle Fishing</title>
+    <script type="module" crossorigin src="./assets/index-Dejx23HH.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-B1CzFP_O.css">
+  </head>
+  <body>
+    <main class="game">
+      <div class="game-frame">
+        <canvas data-testid="game-canvas" tabindex="0" aria-describedby="game-message game-keyboard"></canvas>
+        <header class="hud-top">
+          <nav class="hud-pair" data-copy-label="gameMenu">
+            <button class="tile" data-panel="tackle" data-icon="pack" data-copy-label="inventory"></button>
+            <button class="tile" data-panel="collection" data-icon="journal" data-copy-label="glossary"></button>
+          </nav>
+          <div class="lake-status" data-testid="lake-status" data-copy-label="timeAndWeather">
+            <time></time><span></span>
+          </div>
+          <button class="tile" data-panel="settings" data-icon="gear" data-copy-label="settings"></button>
+        </header>
+        <p class="snack" id="game-message" data-testid="message" role="status"></p>
+        <button class="world-pin" data-building="shop" data-icon="shop" data-copy-label="shop" hidden></button>
+        <button class="world-pin" data-building="house" data-icon="house" data-copy-label="house" hidden></button>
+        <button class="world-pin" data-building="market" data-icon="market" data-copy-label="market" hidden></button>
+        <button class="world-pin" data-building="cafe" data-icon="cafe" data-copy-label="cafe" hidden></button>
+        <div class="gesture-hints" data-testid="gesture-hints" aria-hidden="true"><span></span><span></span></div>
+        <div class="fishing-feedback" aria-hidden="true"></div>
+        <footer class="game-footer">
+          <div class="joystick" data-testid="joystick" role="group" data-copy-label="joystick" hidden><i aria-hidden="true"></i></div>
+          <p class="water-reading" data-testid="water-reading" hidden></p>
+          <div class="cast-distance" hidden>
+            <button type="button" class="distance-toggle" data-testid="distance-toggle" data-icon="ruler"
+              aria-expanded="false" aria-controls="distance-track"><span></span></button>
+            <div id="distance-track" class="distance-track" hidden>
+              <input id="cast-distance" type="range" step="0.1" aria-orientation="vertical" data-testid="cast-distance" data-copy-label="castRange" />
+            </div>
+          </div>
+          <div class="shore-tools" data-testid="shore-tools">
+            <nav class="rigs tray" data-copy-label="rigs" data-testid="quick-rigs"></nav>
+            <nav class="baits tray" data-copy-label="baits" data-testid="quick-baits"></nav>
+            <button class="tile keepnet" data-panel="bag" data-icon="net" data-testid="open-bag"></button>
+          </div>
+          <div class="fight-dock">
+            <section class="fishing-meters" data-testid="fishing-meters" hidden>
+              <div class="load-heading"><label for="tension" data-copy="load"></label><span id="load-status"></span></div>
+              <div class="load-track"><meter class="sr-only" id="tension" min="0" max="1" high="0.88" optimum="0" value="0"></meter><i aria-hidden="true"></i></div>
+              <div class="reading"><span id="line-reading"><span></span></span><span id="distance-reading"></span></div>
+              <div class="drag-control" data-testid="drag-control" hidden>
+                <button type="button" data-testid="drag-down" data-copy-label="dragDown">−</button>
+                <output data-testid="drag-value"></output>
+                <button type="button" data-testid="drag-up" data-copy-label="dragUp">+</button>
+              </div>
+            </section>
+          </div>
+        </footer>
+        <div class="sr-only">
+          <span data-testid="bite-announcement" role="status"></span>
+          <span data-testid="coins"></span><span data-testid="location"></span><span data-testid="equipped"></span><span id="game-keyboard"></span>
+        </div>
+      </div>
+      <dialog class="game-dialog" aria-labelledby="panel-title" data-testid="game-dialog">
+        <div class="dialog-header">
+          <h2 id="panel-title" tabindex="-1"></h2>
+          <button type="button" class="close-dialog" data-testid="close-dialog" data-copy-label="close">×</button>
+        </div>
+        <div class="dialog-content" data-testid="panel-content"></div>
+        <section class="settings-controls" hidden>
+          <button type="button" class="sound-toggle" data-testid="sound" aria-pressed="true" data-copy="sound"></button>
+          <button type="button" data-testid="fullscreen" data-copy="fullscreen" hidden></button>
+        </section>
+        <p class="panel-feedback" role="status" data-testid="panel-feedback"></p>
+      </dialog>
+    </main>
+  </body>
+</html>
