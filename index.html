@@ -7,8 +7,8 @@
     <meta name="theme-color" content="#182b27" />
     <link rel="icon" href="data:," />
     <title>Idle Fishing</title>
-    <script type="module" crossorigin src="./assets/index-CCwpzQEl.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-B7wJkxkU.css">
+    <script type="module" crossorigin src="./assets/index-OSPKyCmo.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-KNMLkxPe.css">
   </head>
   <body>
     <main class="game">
@@ -32,6 +32,7 @@
           <button class="tile" data-panel="settings" data-icon="gear" data-copy-label="settings"></button>
         </header>
         <p class="snack" id="game-message" data-testid="message" role="status"></p>
+        <p class="rig-alert" data-testid="rig-alert" role="status" hidden></p>
         <button class="world-pin" data-building="shop" data-icon="shop" data-copy-label="shop" hidden></button>
         <button class="world-pin" data-building="house" data-icon="house" data-copy-label="house" hidden></button>
         <button class="world-pin" data-building="market" data-icon="market" data-copy-label="market" hidden></button>
@@ -57,12 +58,12 @@
               <div class="load-heading"><label for="tension" data-copy="load"></label><span id="load-status"></span></div>
               <div class="load-track"><meter class="sr-only" id="tension" min="0" max="1" high="0.88" optimum="0" value="0"></meter><i aria-hidden="true"></i></div>
               <div class="reading"><span id="line-reading"><span></span></span><span id="distance-reading"></span></div>
-              <div class="drag-control" data-testid="drag-control" hidden>
-                <button type="button" data-testid="drag-down" data-copy-label="dragDown">−</button>
-                <output data-testid="drag-value"></output>
-                <button type="button" data-testid="drag-up" data-copy-label="dragUp">+</button>
-              </div>
             </section>
+            <div class="drag-control" data-testid="drag-control" hidden>
+              <button type="button" data-testid="drag-down" data-copy-label="dragDown">−</button>
+              <output data-testid="drag-value"></output>
+              <button type="button" data-testid="drag-up" data-copy-label="dragUp">+</button>
+            </div>
           </div>
         </footer>
         <div class="sr-only">
