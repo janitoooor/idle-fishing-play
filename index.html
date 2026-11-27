@@ -7,8 +7,8 @@
     <meta name="theme-color" content="#182b27" />
     <link rel="icon" href="data:," />
     <title>Idle Fishing</title>
-    <script type="module" crossorigin src="./assets/index-CaT6OZkN.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-CWSmPbdD.css">
+    <script type="module" crossorigin src="./assets/index-Ctm0goBt.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-FkI2TNCc.css">
   </head>
   <body>
     <main class="game">
@@ -49,6 +49,13 @@
               <input id="cast-distance" type="range" step="0.1" aria-orientation="vertical" data-testid="cast-distance" data-copy-label="castRange" />
             </div>
           </div>
+          <div class="drag-control" data-testid="drag-control" hidden>
+            <button type="button" class="tile drag-lock" data-testid="drag-lock" data-icon="lock" data-copy-label="dragLock" aria-pressed="false"></button>
+            <button type="button" class="tile drag-toggle" data-testid="drag-toggle" data-icon="drag" aria-expanded="false" aria-controls="drag-track"><span data-testid="drag-value"></span></button>
+            <div id="drag-track" class="distance-track drag-track" data-testid="drag-track" hidden>
+              <input id="drag-setting" type="range" min="1" max="10" step="1" aria-orientation="vertical" data-testid="drag-slider" data-copy-label="drag" />
+            </div>
+          </div>
           <div class="shore-tools" data-testid="shore-tools">
             <nav class="rigs tray" data-copy-label="rigs" data-testid="quick-rigs"></nav>
             <nav class="baits tray" data-copy-label="baits" data-testid="quick-baits"></nav>
@@ -60,11 +67,6 @@
               <div class="load-track"><meter class="sr-only" id="tension" min="0" max="1" high="0.88" optimum="0" value="0"></meter><i aria-hidden="true"></i></div>
               <div class="reading"><span id="line-reading"><span></span></span><span id="distance-reading"></span></div>
             </section>
-            <div class="drag-control" data-testid="drag-control" hidden>
-              <button type="button" data-testid="drag-down" data-copy-label="dragDown">−</button>
-              <output data-testid="drag-value"></output>
-              <button type="button" data-testid="drag-up" data-copy-label="dragUp">+</button>
-            </div>
           </div>
         </footer>
         <div class="sr-only">
