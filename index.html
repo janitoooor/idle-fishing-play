@@ -7,8 +7,8 @@
     <meta name="theme-color" content="#182b27" />
     <link rel="icon" href="data:," />
     <title>Idle Fishing</title>
-    <script type="module" crossorigin src="./assets/index-kbxOv9uk.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-D58vwrDJ.css">
+    <script type="module" crossorigin src="./assets/index-CCwpzQEl.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-B7wJkxkU.css">
   </head>
   <body>
     <main class="game">
@@ -20,8 +20,14 @@
             <button class="tile" data-panel="collection" data-icon="journal" data-copy-label="glossary"></button>
             <button class="tile" data-panel="lakeMap" data-icon="map" data-copy-label="lakeMap" data-testid="open-lake-map"></button>
           </nav>
-          <div class="lake-status" data-testid="lake-status" data-copy-label="timeAndWeather">
-            <time></time><span></span>
+          <div class="hud-cluster">
+            <p class="coin-badge">
+              <span data-testid="coins"></span>
+              <span class="coin-float" hidden></span>
+            </p>
+            <div class="lake-status" data-testid="lake-status" data-copy-label="timeAndWeather">
+              <time></time><span></span>
+            </div>
           </div>
           <button class="tile" data-panel="settings" data-icon="gear" data-copy-label="settings"></button>
         </header>
@@ -61,7 +67,7 @@
         </footer>
         <div class="sr-only">
           <span data-testid="bite-announcement" role="status"></span>
-          <span data-testid="coins"></span><span data-testid="location"></span><span data-testid="equipped"></span><span id="game-keyboard"></span>
+          <span data-testid="location"></span><span data-testid="equipped"></span><span id="game-keyboard"></span>
         </div>
       </div>
       <dialog class="game-dialog" aria-labelledby="panel-title" data-testid="game-dialog">
