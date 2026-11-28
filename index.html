@@ -7,14 +7,14 @@
     <meta name="theme-color" content="#182b27" />
     <link rel="icon" href="data:," />
     <title>Idle Fishing</title>
-    <script type="module" crossorigin src="./assets/index-DPGnpx8i.js"></script>
+    <script type="module" crossorigin src="./assets/index-sK7B-2Zz.js"></script>
     <link rel="stylesheet" crossorigin href="./assets/index-DPfNs-qz.css">
   </head>
   <body>
     <main class="game">
       <div class="game-frame">
         <canvas data-testid="game-canvas" tabindex="0" aria-describedby="game-message game-keyboard"></canvas>
-        <header class="hud-top">
+        <header class="hud-top" hidden>
           <button type="button" class="lake-status hud-plate" data-testid="lake-status" data-panel="settings" data-copy-label="settings">
             <time></time><span class="sr-only"></span>
           </button>
@@ -36,7 +36,7 @@
         <button class="world-pin" data-building="cafe" data-icon="cafe" data-copy-label="cafe" hidden></button>
         <div class="gesture-hints" data-testid="gesture-hints" aria-hidden="true"><span></span><span></span></div>
         <div class="fishing-feedback" aria-hidden="true"></div>
-        <footer class="game-footer">
+        <footer class="game-footer" hidden>
           <div class="joystick" data-testid="joystick" role="group" data-copy-label="joystick" hidden><i aria-hidden="true"></i><svg class="stick-arrows" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 9l5 7H45z M91 50l-7 5V45z M50 91l-5-7h10z M9 50l7-5v10z" fill="#d2bc91"/></svg></div>
           <p class="water-reading" data-testid="water-reading" hidden></p>
           <div class="cast-distance" hidden>
