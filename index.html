@@ -7,42 +7,91 @@
     <meta name="theme-color" content="#182b27" />
     <link rel="icon" href="data:," />
     <title>Idle Fishing</title>
-    <script type="module" crossorigin src="./assets/index-sK7B-2Zz.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-DPfNs-qz.css">
+    <style>
+      #game-loading {
+        position: fixed; inset: 0; z-index: 20; display: grid; place-content: center;
+        background: radial-gradient(ellipse at 50% 49%, #416852, transparent 68%), #253e34;
+        color: #f2dfb6; font: 700 20px/1.3 Georgia, serif; text-align: center;
+        user-select: none; -webkit-user-select: none;
+      }
+      #game-loading[hidden] { display: none; }
+      #game-loading p { margin: 6px 0; }
+      #game-loading svg { display: block; width: min(71vw, 265px); height: auto; }
+      .loading-wake { stroke: #adbd958a; stroke-linecap: round; fill: none; }
+      .loading-lure { animation: lure-drift 1.8s ease-in-out infinite alternate; }
+      .loading-fish { animation: fish-follow 1.8s ease-in-out infinite alternate; }
+      .loading-tail { transform-origin: 61px 48px; animation: fish-tail .36s ease-in-out infinite alternate; }
+      @keyframes lure-drift { to { transform: translate(19px,-5px); } }
+      @keyframes fish-follow { 18% { transform: translate(0, 1px); } to { transform: translate(27px,-3px); } }
+      @keyframes fish-tail { to { transform: scaleY(.65) rotate(-7deg); } }
+      @media (prefers-reduced-motion: reduce) {
+        .loading-lure, .loading-fish, .loading-tail { animation: none; }
+      }
+    </style>
+    <script type="module" crossorigin src="./assets/index-DpxIw37H.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-DaJkF--h.css">
   </head>
   <body>
+    <div id="game-loading" role="status">
+      <svg viewBox="0 0 238 91" aria-hidden="true">
+        <path class="loading-wake" d="M15 67q27-6 53 0m99 7q22-5 44 0m-73-54q29-5 51 0M28 31l24-1" />
+        <g class="loading-lure">
+          <path d="M177 0q1 23-7 43" fill="none" stroke="#ddca9c" stroke-width="1"/>
+          <path d="M170 37q-7 5-4 17 9-4 7-13Z" fill="#dba464" stroke="#493f2d" stroke-width="1.4"/>
+          <path d="M166 53q-5 7 0 8 4 0 4-4" fill="none" stroke="#ead1a0" stroke-width="1.3"/>
+        </g>
+        <g class="loading-fish" fill="#a0a576" stroke="#273d34" stroke-width="1.5" stroke-linejoin="round">
+          <path class="loading-tail" d="M63 49Q52 42 42 37l3 12-3 11q13-2 21-11Z" fill="#9a8357"/>
+          <path d="M69 43q10-19 25-10l6 6m-14 17q5 11 14 4" fill="#9a8357"/>
+          <path d="M56 49q17-11 39-11 14 0 25 11-15 10-32 11-18-1-32-11Z"/>
+          <path d="M101 42q-5 7-1 13m-21-10q-5 3 0 7m8-7q-5 3 0 7" fill="none" stroke="#6b7951"/>
+          <circle cx="108" cy="46" r="2" fill="#e9ce86"/>
+        </g>
+      </svg>
+      <p>Загружаем озеро…</p>
+    </div>
     <main class="game">
       <div class="game-frame">
         <canvas data-testid="game-canvas" tabindex="0" aria-describedby="game-message game-keyboard"></canvas>
         <header class="hud-top" hidden>
-          <button type="button" class="lake-status hud-plate" data-testid="lake-status" data-panel="settings" data-copy-label="settings">
+          <div class="lake-status hud-plate" data-testid="lake-status">
             <time></time><span class="sr-only"></span>
-          </button>
+          </div>
+          <div class="hud-progress">
+            <p class="coin-badge hud-plate">
+              <span class="coin-mark" data-icon="coin" aria-hidden="true"></span><span data-testid="coins"></span><span class="coin-float" hidden></span>
+            </p>
+            <p class="angler-badge hud-plate" data-testid="hud-experience"><span></span><span></span></p>
+          </div>
           <nav class="hud-pair" data-copy-label="gameMenu">
             <button class="tile hud-plate" data-panel="lakeMap" data-icon="map" data-copy-label="lakeMap" data-testid="open-lake-map"></button>
             <button class="tile hud-plate" data-panel="collection" data-icon="journal" data-copy-label="glossary"></button>
+            <button class="tile hud-plate" data-panel="settings" data-icon="gear" data-copy-label="settings" data-testid="open-settings"></button>
           </nav>
         </header>
         <aside class="lake-notices" data-copy-label="messages">
           <p class="snack" id="game-message" data-testid="message" role="status"></p>
           <p class="rig-alert" data-testid="rig-alert" role="status" hidden></p>
         </aside>
-        <button class="world-pin" data-building="wormPatch" data-icon="worm" data-copy-label="wormPatch" hidden></button>
-        <button class="world-pin" data-building="silt" data-icon="bloodworm" data-copy-label="siltBank" hidden></button>
-        <button class="world-pin" data-building="gardener" data-icon="barley" data-copy-label="gardener" hidden></button>
-        <button class="world-pin" data-building="shop" data-icon="shop" data-copy-label="shop" hidden></button>
-        <button class="world-pin" data-building="house" data-icon="house" data-copy-label="house" hidden></button>
-        <button class="world-pin" data-building="market" data-icon="market" data-copy-label="market" hidden></button>
-        <button class="world-pin" data-building="cafe" data-icon="cafe" data-copy-label="cafe" hidden></button>
+        <button class="world-pin" data-building="wormPatch" data-icon="site-wormPatch" data-copy-label="wormPatch" hidden></button>
+        <button class="world-pin" data-building="silt" data-icon="site-silt" data-copy-label="siltBank" hidden></button>
+        <button class="world-pin" data-building="gardener" data-icon="site-gardener" data-copy-label="gardener" hidden></button>
+        <button class="world-pin" data-building="shop" data-icon="site-shop" data-copy-label="shop" hidden></button>
+        <button class="world-pin" data-building="house" data-icon="site-house" data-copy-label="house" hidden></button>
+        <button class="world-pin" data-building="market" data-icon="site-market" data-copy-label="market" hidden></button>
+        <button class="world-pin" data-building="cafe" data-icon="site-cafe" data-copy-label="cafe" hidden></button>
         <div class="gesture-hints" data-testid="gesture-hints" aria-hidden="true"><span></span><span></span></div>
         <div class="fishing-feedback" aria-hidden="true"></div>
         <footer class="game-footer" hidden>
           <div class="joystick" data-testid="joystick" role="group" data-copy-label="joystick" hidden><i aria-hidden="true"></i><svg class="stick-arrows" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 9l5 7H45z M91 50l-7 5V45z M50 91l-5-7h10z M9 50l7-5v10z" fill="#d2bc91"/></svg></div>
           <p class="water-reading" data-testid="water-reading" hidden></p>
           <div class="cast-distance" hidden>
-            <button type="button" class="tile distance-toggle" data-testid="distance-toggle" data-icon="ruler"><span class="quick-value"></span><span class="quick-marks" aria-hidden="true"></span><i class="quick-pointer" aria-hidden="true"></i></button>
+            <button type="button" class="tile hud-plate distance-toggle" data-testid="distance-toggle" data-icon="ruler">
+              <span class="quick-value"></span>
+            </button>
             <div id="distance-track" class="distance-track" hidden>
-              <b class="quick-range-title" data-copy="castRangeShort"></b><div class="quick-limits" aria-hidden="true"><span></span><span></span></div>
+              <div class="quick-marks" aria-hidden="true"></div>
+              <i class="quick-pointer" aria-hidden="true"></i>
               <input id="cast-distance" type="range" step="0.1" aria-orientation="vertical" data-testid="cast-distance" data-copy-label="castRange" />
             </div>
           </div>
@@ -51,6 +100,7 @@
               aria-valuemin="1" aria-orientation="horizontal" data-copy-label="drag" aria-describedby="drag-help">
               <span class="drag-caption" data-copy="drag"></span>
             </button>
+            <output class="drag-reading hud-plate" data-testid="drag-reading" hidden></output>
             <span class="sr-only" id="drag-help" data-copy="dragHelp"></span>
           </div>
           <div class="shore-tools" data-testid="shore-tools">
@@ -91,9 +141,7 @@
         </nav>
         <section class="settings-controls" hidden>
           <div class="settings-status">
-            <span class="weather-note"></span><p class="coin-badge">
-              <span class="coin-mark" data-icon="coin" aria-hidden="true"></span><span data-testid="coins"></span><span class="coin-float" hidden></span>
-            </p>
+            <span class="weather-note"></span><span class="settings-balance"></span>
           </div>
           <button type="button" class="sound-toggle" data-testid="sound" aria-pressed="true" data-copy="sound"></button>
           <div class="volume-control">
