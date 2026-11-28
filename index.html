@@ -28,8 +28,8 @@
         .loading-lure, .loading-fish, .loading-tail { animation: none; }
       }
     </style>
-    <script type="module" crossorigin src="./assets/index-C77uMqGK.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-DaJkF--h.css">
+    <script type="module" crossorigin src="./assets/index-BlQA4pkK.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-ewYjeDgG.css">
   </head>
   <body>
     <div id="game-loading" role="status">
@@ -55,13 +55,16 @@
         <canvas data-testid="game-canvas" tabindex="0" aria-describedby="game-message game-keyboard"></canvas>
         <header class="hud-top" hidden>
           <div class="lake-status hud-plate" data-testid="lake-status">
-            <time></time><span class="sr-only"></span>
-          </div>
-          <div class="hud-progress">
-            <p class="coin-badge hud-plate">
-              <span class="coin-mark" data-icon="coin" aria-hidden="true"></span><span data-testid="coins"></span><span class="coin-float" hidden></span>
-            </p>
-            <p class="angler-badge hud-plate" data-testid="hud-experience"><span></span><span></span></p>
+            <div class="hud-progress">
+              <span class="hud-level"></span>
+              <p class="coin-badge">
+                <span class="coin-mark" data-icon="coin" aria-hidden="true"></span><span data-testid="coins"></span><span class="coin-float" hidden></span>
+              </p>
+            </div>
+            <div class="lake-clock">
+              <time></time><span class="hud-xp" data-testid="hud-experience"></span>
+            </div>
+            <span class="lake-weather sr-only"></span>
           </div>
           <nav class="hud-pair" data-copy-label="gameMenu">
             <button class="tile hud-plate" data-panel="lakeMap" data-icon="map" data-copy-label="lakeMap" data-testid="open-lake-map"></button>
@@ -95,13 +98,14 @@
               <input id="cast-distance" type="range" step="0.1" aria-orientation="vertical" data-testid="cast-distance" data-copy-label="castRange" />
             </div>
           </div>
-          <div class="drag-control" data-testid="drag-control" hidden>
-            <button type="button" class="reel-drag" data-testid="drag-toggle" role="slider"
-              aria-valuemin="1" aria-orientation="horizontal" data-copy-label="drag" aria-describedby="drag-help">
-              <span class="drag-caption" data-copy="drag"></span>
-            </button>
-            <output class="drag-reading hud-plate" data-testid="drag-reading" hidden></output>
-            <span class="sr-only" id="drag-help" data-copy="dragHelp"></span>
+          <div class="right-tools">
+            <button class="tile hud-plate keepnet" data-panel="bag" data-testid="open-bag"></button>
+            <div class="drag-control" data-testid="drag-control" hidden>
+              <div class="drag-reading hud-plate" data-testid="drag-reading" aria-hidden="true"></div>
+              <button type="button" class="reel-drag" data-testid="drag-toggle" role="slider"
+                aria-valuemin="1" aria-orientation="horizontal" data-copy-label="drag" aria-describedby="drag-help"></button>
+              <span class="sr-only" id="drag-help" data-copy="dragHelp"></span>
+            </div>
           </div>
           <div class="shore-tools" data-testid="shore-tools">
             <div class="shore-kit">
@@ -111,7 +115,6 @@
                   <nav class="baits tray" data-copy-label="baits" data-testid="quick-baits"></nav></div>
               </details>
             </div>
-            <button class="tile hud-plate keepnet" data-panel="bag" data-icon="net" data-testid="open-bag"></button>
           </div>
           <div class="fight-dock">
             <section class="fishing-meters" data-testid="fishing-meters" hidden>
