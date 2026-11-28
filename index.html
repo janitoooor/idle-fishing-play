@@ -7,8 +7,8 @@
     <meta name="theme-color" content="#182b27" />
     <link rel="icon" href="data:," />
     <title>Idle Fishing</title>
-    <script type="module" crossorigin src="./assets/index-JEMuLI3M.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-C-P0UwOx.css">
+    <script type="module" crossorigin src="./assets/index-S-sncNnU.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-BuPQ0v6a.css">
   </head>
   <body>
     <main class="game">
@@ -50,11 +50,11 @@
             </div>
           </div>
           <div class="drag-control" data-testid="drag-control" hidden>
-            <button type="button" class="tile drag-lock" data-testid="drag-lock" data-icon="lock" data-copy-label="dragLock" aria-pressed="false"></button>
-            <button type="button" class="tile drag-toggle" data-testid="drag-toggle" data-icon="drag" aria-expanded="false" aria-controls="drag-track"><span data-testid="drag-value"></span></button>
-            <div id="drag-track" class="distance-track drag-track" data-testid="drag-track" hidden>
-              <input id="drag-setting" type="range" min="1" max="9" step="1" aria-orientation="vertical" data-testid="drag-slider" data-copy-label="drag" />
-            </div>
+            <button type="button" class="reel-drag" data-testid="drag-toggle" role="slider"
+              aria-valuemin="1" aria-orientation="horizontal" data-copy-label="drag" aria-describedby="drag-help">
+              <span class="drag-caption" data-copy="drag"></span>
+            </button>
+            <span class="sr-only" id="drag-help" data-copy="dragHelp"></span>
           </div>
           <div class="shore-tools" data-testid="shore-tools">
             <nav class="rigs tray" data-copy-label="rigs" data-testid="quick-rigs"></nav>
