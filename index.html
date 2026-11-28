@@ -7,33 +7,26 @@
     <meta name="theme-color" content="#182b27" />
     <link rel="icon" href="data:," />
     <title>Idle Fishing</title>
-    <script type="module" crossorigin src="./assets/index-avFoTlSL.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-CRiaRtp4.css">
+    <script type="module" crossorigin src="./assets/index-DPGnpx8i.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-DPfNs-qz.css">
   </head>
   <body>
     <main class="game">
       <div class="game-frame">
         <canvas data-testid="game-canvas" tabindex="0" aria-describedby="game-message game-keyboard"></canvas>
         <header class="hud-top">
+          <button type="button" class="lake-status hud-plate" data-testid="lake-status" data-panel="settings" data-copy-label="settings">
+            <time></time><span class="sr-only"></span>
+          </button>
           <nav class="hud-pair" data-copy-label="gameMenu">
-            <button class="tile" data-panel="tackle" data-icon="pack" data-copy-label="inventory"></button>
-            <button class="tile" data-panel="collection" data-icon="journal" data-copy-label="glossary"></button>
-            <button class="tile" data-panel="lakeMap" data-icon="map" data-copy-label="lakeMap" data-testid="open-lake-map"></button>
+            <button class="tile hud-plate" data-panel="lakeMap" data-icon="map" data-copy-label="lakeMap" data-testid="open-lake-map"></button>
+            <button class="tile hud-plate" data-panel="collection" data-icon="journal" data-copy-label="glossary"></button>
           </nav>
-          <div class="hud-cluster">
-            <p class="coin-badge">
-              <span class="coin-mark" data-icon="coin" aria-hidden="true"></span>
-              <span data-testid="coins"></span>
-              <span class="coin-float" hidden></span>
-            </p>
-            <div class="lake-status" data-testid="lake-status" data-copy-label="timeAndWeather">
-              <time></time><span></span>
-            </div>
-          </div>
-          <button class="tile" data-panel="settings" data-icon="gear" data-copy-label="settings"></button>
         </header>
-        <p class="snack" id="game-message" data-testid="message" role="status"></p>
-        <p class="rig-alert" data-testid="rig-alert" role="status" hidden></p>
+        <aside class="lake-notices" data-copy-label="messages">
+          <p class="snack" id="game-message" data-testid="message" role="status"></p>
+          <p class="rig-alert" data-testid="rig-alert" role="status" hidden></p>
+        </aside>
         <button class="world-pin" data-building="wormPatch" data-icon="worm" data-copy-label="wormPatch" hidden></button>
         <button class="world-pin" data-building="silt" data-icon="bloodworm" data-copy-label="siltBank" hidden></button>
         <button class="world-pin" data-building="gardener" data-icon="barley" data-copy-label="gardener" hidden></button>
@@ -44,11 +37,12 @@
         <div class="gesture-hints" data-testid="gesture-hints" aria-hidden="true"><span></span><span></span></div>
         <div class="fishing-feedback" aria-hidden="true"></div>
         <footer class="game-footer">
-          <div class="joystick" data-testid="joystick" role="group" data-copy-label="joystick" hidden><i aria-hidden="true"></i></div>
+          <div class="joystick" data-testid="joystick" role="group" data-copy-label="joystick" hidden><i aria-hidden="true"></i><svg class="stick-arrows" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 9l5 7H45z M91 50l-7 5V45z M50 91l-5-7h10z M9 50l7-5v10z" fill="#d2bc91"/></svg></div>
           <p class="water-reading" data-testid="water-reading" hidden></p>
           <div class="cast-distance" hidden>
-            <button type="button" class="tile distance-toggle" data-testid="distance-toggle" data-icon="ruler"><span></span></button>
+            <button type="button" class="tile distance-toggle" data-testid="distance-toggle" data-icon="ruler"><span class="quick-value"></span><span class="quick-marks" aria-hidden="true"></span><i class="quick-pointer" aria-hidden="true"></i></button>
             <div id="distance-track" class="distance-track" hidden>
+              <b class="quick-range-title" data-copy="castRangeShort"></b><div class="quick-limits" aria-hidden="true"><span></span><span></span></div>
               <input id="cast-distance" type="range" step="0.1" aria-orientation="vertical" data-testid="cast-distance" data-copy-label="castRange" />
             </div>
           </div>
@@ -60,15 +54,24 @@
             <span class="sr-only" id="drag-help" data-copy="dragHelp"></span>
           </div>
           <div class="shore-tools" data-testid="shore-tools">
-            <nav class="rigs tray" data-copy-label="rigs" data-testid="quick-rigs"></nav>
-            <nav class="baits tray" data-copy-label="baits" data-testid="quick-baits"></nav>
-            <button class="tile keepnet" data-panel="bag" data-icon="net" data-testid="open-bag"></button>
+            <div class="shore-kit">
+              <button type="button" class="tile hud-plate float-button" data-panel="tackle" data-copy-label="inventory"><canvas width="112" height="112" aria-hidden="true"></canvas></button>
+              <details class="quick-kit"><summary class="hud-plate" data-copy-label="quickTackle"><span aria-hidden="true">⌃</span></summary>
+                <div class="quick-trays hud-plate"><nav class="rigs tray" data-copy-label="rigs" data-testid="quick-rigs"></nav>
+                  <nav class="baits tray" data-copy-label="baits" data-testid="quick-baits"></nav></div>
+              </details>
+            </div>
+            <button class="tile hud-plate keepnet" data-panel="bag" data-icon="net" data-testid="open-bag"></button>
           </div>
           <div class="fight-dock">
             <section class="fishing-meters" data-testid="fishing-meters" hidden>
-              <div class="load-heading"><label for="tension" data-copy="load"></label><span id="load-status"></span></div>
-              <div class="load-track"><meter class="sr-only" id="tension" min="0" max="1" high="0.88" optimum="0" value="0"></meter><i aria-hidden="true"></i></div>
-              <div class="reading"><span id="line-reading"><span></span></span><span id="distance-reading"></span></div>
+              <div class="load-reading hud-plate">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 7V6a3 3 0 1 1 6 0v1M7 8h10l4 12H3Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+                <label class="sr-only" for="tension" data-copy="load"></label>
+                <div class="load-track"><meter class="sr-only" id="tension" min="0" max="1" high="0.88" optimum="0" value="0"></meter><i aria-hidden="true"></i></div><span id="load-status"></span>
+              </div>
+              <div class="reading hud-plate"><span id="line-reading"><span></span></span>
+                <span id="distance-reading"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 7v10m20-10v10M5 12h14m-11-3-3 3 3 3m8-6 3 3-3 3" fill="none" stroke="currentColor" stroke-width="1.7"/></svg><span></span></span></div>
             </section>
           </div>
         </footer>
@@ -82,7 +85,16 @@
           <h2 id="panel-title" tabindex="-1"></h2>
           <button type="button" class="close-dialog" data-testid="close-dialog" data-copy-label="close">×</button>
         </div>
+        <nav class="settings-tabs" data-copy-label="settings" hidden>
+          <button type="button" data-section="audio" data-copy="soundAndDisplay" aria-pressed="true"></button>
+          <button type="button" data-section="help" data-copy="controlsHelp" aria-pressed="false"></button>
+        </nav>
         <section class="settings-controls" hidden>
+          <div class="settings-status">
+            <span class="weather-note"></span><p class="coin-badge">
+              <span class="coin-mark" data-icon="coin" aria-hidden="true"></span><span data-testid="coins"></span><span class="coin-float" hidden></span>
+            </p>
+          </div>
           <button type="button" class="sound-toggle" data-testid="sound" aria-pressed="true" data-copy="sound"></button>
           <div class="volume-control">
             <label for="music-volume" data-copy="musicVolume"></label>
@@ -96,7 +108,8 @@
           </div>
           <button type="button" data-testid="fullscreen" data-copy="fullscreen" hidden></button>
           <button type="button" class="reset-progress" data-testid="reset-progress" aria-controls="reset-confirmation" aria-expanded="false" data-copy="resetProgress"></button>
-          <div id="reset-confirmation" class="reset-confirmation" data-testid="reset-confirmation" role="group" aria-labelledby="reset-warning" hidden>
+          <div id="reset-confirmation" class="reset-confirmation" data-testid="reset-confirmation" role="group" aria-labelledby="reset-note-heading" aria-describedby="reset-warning" hidden>
+            <h3 id="reset-note-heading" data-copy="resetQuestion"></h3>
             <p id="reset-warning" data-copy="resetProgressWarning"></p>
             <div class="reset-actions">
               <button type="button" data-testid="cancel-reset" data-copy="cancel"></button>
